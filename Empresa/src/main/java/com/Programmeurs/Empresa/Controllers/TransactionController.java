@@ -34,14 +34,10 @@ public class TransactionController {
 
 
     @PatchMapping
-    public void updateTransaction(@PathVariable("transactionId") Long transactionId,
-                                  @RequestParam(required = false) String concept,
-                                  @RequestParam(required = false) BigDecimal amount,
-                                  @RequestParam(required = false) Enterprise enterprise,
-                                  @RequestParam(required = false) Employee employee
+    public void updateTransaction(@PathVariable("transactionId") Long transactionId,@RequestBody Transaction transactionC
 
     ){
-        transactionService.updateTransaction(transactionId, concept, amount, enterprise, employee);
+        transactionService.updateTransaction(transactionId, transactionC);
     }
 
     @DeleteMapping

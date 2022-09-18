@@ -25,13 +25,12 @@ public class TransactionService {
         return transactionRepository.findTransactionById(transactionId);
     }
 
-    public void updateTransaction(long transactionId, String concept, BigDecimal amount, Enterprise enterprise, Employee employee){
+    public void updateTransaction(Long transactionId, Transaction transactionC){
         Transaction transaction = transactionRepository.findTransactionById(transactionId);
-
-        transaction.setConcept(concept);
-        transaction.setAmount(amount);
-        transaction.setEnterprise(enterprise);
-        transaction.setEmployee(employee);
+        transaction.setConcept(transactionC.getConcept());
+        transaction.setAmount(transactionC.getAmount());
+        transaction.setEnterprise(transactionC.getEnterprise());
+        transaction.setEmployee(transactionC.getEmployee());
         transactionRepository.save(transaction);
 
     }
