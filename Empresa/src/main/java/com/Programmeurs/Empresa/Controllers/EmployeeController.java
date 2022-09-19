@@ -20,8 +20,8 @@ public class EmployeeController {
     }
 
     @GetMapping
-    public List<Employee> getEmployee() {
-        return this.employeeService.getEmployee();
+    public List<Employee> getEmployees() {
+        return this.employeeService.getEmployees();
     }
 
     @PostMapping
@@ -30,17 +30,13 @@ public class EmployeeController {
     }
 
     @GetMapping(path = "{employeeId}")
-    public Enterprise getEmployee(@PathVariable ("employeeId") Long employeeId){
-        return employeeService.getEmployee(employeeId).getEnterprise();
+    public Employee getEmployee(@PathVariable ("employeeId") Long employeeId){
+        return employeeService.getEmployee(employeeId);
     }
 
     @PatchMapping(path = "{employeeId}")
-    public void updateEmployee(@PathVariable("employeeId") Long employeeId, @RequestParam(required = false) String email,
-                               @RequestParam(required = false) Profile profile,
-                               @RequestParam(required = false) Enmu_RoleName enmu_RoleName,
-                               @RequestParam(required = false) Enterprise enterprise,
-                               @RequestParam(required = false) List<Transaction> transactions){
-        employeeService.updateEmployee(employeeId, email, profile, enmu_RoleName, enterprise, transactions);
+    public void updateEmployee(@PathVariable("employeeId") Long employeeId, @RequestBody Employee employeeC){
+        employeeService.updateEmployee(employeeId, employeeC);
     }
 
     @DeleteMapping(path = "{employeeId}")

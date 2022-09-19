@@ -31,12 +31,12 @@ public class EnterpriseService {
 
     }
 
-    public void updateEnterprise(Long enterpriseId, String name, String document,String phone, String address){
+    public void updateEnterprise(Long enterpriseId, Enterprise enterpriseC){
         Enterprise enterprise = enterpriseRepository.findEnterpriseById(enterpriseId);
-        enterprise.setName(name);
-        enterprise.setDocument(document);
-        enterprise.setPhone(phone);
-        enterprise.setAddress(address);
+        enterprise.setName(enterpriseC.getName());
+        enterprise.setDocument(enterpriseC.getDocument());
+        enterprise.setPhone(enterpriseC.getPhone());
+        enterprise.setAddress(enterpriseC.getAddress());
         enterpriseRepository.save(enterprise);
 
     }

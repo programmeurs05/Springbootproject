@@ -35,13 +35,8 @@ public class EnterpriseController {
     }
 
     @PatchMapping(path = "{enterpriseId}")
-    public void updateEnterprise(@PathVariable("enterpriseId") Long enterpriseId,@RequestParam(required = false) String name,
-            @RequestParam(required = false) String document,
-            @RequestParam(required = false) String phone,
-            @RequestParam(required = false) String address
-
-    ){
-        enterpriseService.updateEnterprise(enterpriseId, name, document, phone, address);
+    public void updateEnterprise(@PathVariable("enterpriseId") Long enterpriseId, @RequestBody Enterprise enterpriseC){
+        enterpriseService.updateEnterprise(enterpriseId, enterpriseC);
     }
 
     @DeleteMapping(path = "{enterpriseId}")

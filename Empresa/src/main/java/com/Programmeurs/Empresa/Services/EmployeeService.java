@@ -16,7 +16,7 @@ public class EmployeeService {
         this.employeeRepository = employeeRepository;
     }
 
-    public List<Employee> getEmployee() {
+    public List<Employee> getEmployees() {
         return employeeRepository.findAll();
     }
 
@@ -28,13 +28,13 @@ public class EmployeeService {
         return employeeRepository.findEmployeeById(employeeId);
     }
 
-    public void updateEmployee(Long employeeId, String email, Profile profile, Enmu_RoleName enmu_roleName, Enterprise enterprise, List<Transaction> transactions){
+    public void updateEmployee(Long employeeId,Employee employeeC){
         Employee employee = employeeRepository.findEmployeeById(employeeId);
-        employee.setEmail(email);
-        employee.setProfile(profile);
-        employee.setEnmu_RoleName(enmu_roleName);
-        employee.setEnterprise(enterprise);
-        employee.setTransactions(transactions);
+        employee.setEmail(employeeC.getEmail());
+        employee.setProfile(employeeC.getProfile());
+        employee.setEnmu_RoleName(employeeC.getEnmu_RoleName());
+        employee.setEnterprise(employeeC.getEnterprise());
+        employee.setTransactions(employeeC.getTransactions());
         employeeRepository.save(employee);
 
     }
